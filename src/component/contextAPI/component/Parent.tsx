@@ -1,6 +1,9 @@
+import { useContext } from "react";
 import Child from "./Child";
+import { CounterContext } from "../CounterContext";
 
 const Parent = () => {
+    const { counter, setCounter } = useContext(CounterContext);
     return(
         <div style={{
             width: "60%",
@@ -11,8 +14,8 @@ const Parent = () => {
             marginTop: "2rem"
         }}>
             <h2>Controlled by Parent</h2>
-            <button>Increment</button>
-            <button>Decrement</button>
+            <button onClick={ () => setCounter(counter - 1) }>Decrement</button>
+            <button onClick={ () => setCounter(counter + 1) }>Increment</button>
             <Child />
         </div>
     );

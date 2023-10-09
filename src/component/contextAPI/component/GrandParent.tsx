@@ -1,6 +1,9 @@
+import { useContext } from "react";
 import Parent from "./Parent";
+import { CounterContext } from "../CounterContext";
 
 const GrandParent = () => {
+    const { counter, setCounter } = useContext(CounterContext);
     return(
         <div style={{
             width: "90%",
@@ -10,8 +13,8 @@ const GrandParent = () => {
             margin: "auto",
         }}>
             <h2>Controlled by Grand Parent</h2>
-            <button>Increment</button>
-            <button>Decrement</button>
+            <button onClick={ () => setCounter(counter - 1) }>Decrement</button>
+            <button onClick={ () => setCounter(counter + 1) }>Increment</button>
             <Parent />
         </div>
     );
